@@ -7,6 +7,12 @@ const morgan = require('morgan');
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
 const axios = require('axios');
+var http = require('http');
+
+http.createServer(function(request, response) {
+	response.writeHead(200,{"Content-Type":"text/plain"})
+	response.end("Hello World\m")	
+}).listen(process.env.PORT);
 
 //const AUTH = process.env.AUTH;
 const AUTH = "Bearer RvRO6h55szQAAAAAAAH2txU3jqcMgYHn-zdktTsTEKrHG39t0xdEjuUk-MxXr7Fy";
