@@ -204,33 +204,6 @@ app.post('/moveFile', (req, res) => {
 	});		
 });
 
-// insert a new question
-app.post('/', (req, res) => {
-  const newData = {
-		id:d.id,
-		saveTo:d.saveTo,
-		getFrom:d.getFrom,
-		noFolder:d.noFolder,
-  };
-  database.push(newData);
-  res.status(200).send();
-});
-
-// insert a new answer to a question
-app.post('/answer/:id', (req, res) => {
-  const {answer} = req.body;
-
-  const question = questions.filter(q => (q.id === parseInt(req.params.id)));
-  if (question.length > 1) return res.status(500).send();
-  if (question.length === 0) return res.status(404).send();
-
-  question[0].answers.push({
-    answer,
-  });
-
-  res.status(200).send();
-});
-
 // start the server
 app.listen(8081, () => {
   console.log('listening on port 8081');
